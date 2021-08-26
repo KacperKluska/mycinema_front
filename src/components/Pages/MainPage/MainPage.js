@@ -2,5 +2,9 @@ import Search from "../../Search/Search";
 import "./style.scss";
 
 export default function MainPage() {
-  return <Search />;
+  return (
+    <div className="emptyContent">
+      <Search />
+    </div>
+  );
 }
