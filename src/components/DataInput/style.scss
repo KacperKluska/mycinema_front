@@ -1,13 +1,25 @@
+.data {
+  width: 70%;
+  min-height: 3rem;
+  margin: 1rem 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .dataInput {
-  width: 100%;
+  width: 90%;
   height: 2rem;
-  margin: 1rem 1rem;
   padding: 0.5rem;
 
   outline: none;
-  border-bottom: blue;
+  border: none;
+  border-bottom: 2px solid blue;
+  background-color: transparent;
 }
 
 .dataInput:focus {
-  border: blue;
+  border: 2px solid blue;
+  background-color: white;
 }
