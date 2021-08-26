@@ -24,6 +24,7 @@ export default function Header() {
         )}
         {userLogged && (
           <ul>
+            <li onClick={LogOut}>Account</li>
             <li onClick={LogOut}>Log out</li>
           </ul>
         )}

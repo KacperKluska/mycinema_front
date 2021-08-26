@@ -7,5 +7,5 @@
 #emptyPage {
   background-color: #999;
   width: 100%;
-  height: calc(100vh - 100px - 3rem);
+  min-height: calc(100vh - 100px - 3rem);
 }
