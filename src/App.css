@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+#emptyPage {
+  background-color: #999;
+  width: 100%;
+  height: calc(100vh - 100px - 3rem);
+}

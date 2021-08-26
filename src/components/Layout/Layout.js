@@ -8,6 +8,7 @@ export default function Layout() {
     <BrowserRouter>
       <UserStatusContextProvider>
         <Header />
+        <div id="emptyPage"></div>
         <Footer />
       </UserStatusContextProvider>
     </BrowserRouter>
