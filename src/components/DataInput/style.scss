@@ -1,0 +1,13 @@
+.dataInput {
+  width: 100%;
+  height: 2rem;
+  margin: 1rem 1rem;
+  padding: 0.5rem;
+
+  outline: none;
+  border-bottom: blue;
+}
+
+.dataInput:focus {
+  border: blue;
+}
