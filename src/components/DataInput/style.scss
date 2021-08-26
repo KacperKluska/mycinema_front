@@ -12,6 +12,7 @@
   width: 90%;
   height: 2rem;
   padding: 0.5rem;
+  margin-left: 1rem;
 
   outline: none;
   border: none;
@@ -22,4 +23,8 @@
 .dataInput:focus {
   border: 2px solid blue;
   background-color: white;
+}
+
+.loginLabel {
+  min-width: 70px;
 }
