@@ -5,8 +5,9 @@ import Register from "../../Register/Register";
 export default function LoginPage() {
   return (
     <div className="emptyContent">
-      <article className="content">
+      <article className="content loginPage">
         <Login />
+        <div className="separator" />
         <Register />
       </article>
     </div>
