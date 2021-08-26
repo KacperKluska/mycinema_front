@@ -7,8 +7,8 @@ export default function DataInput({ placeHolder, editable, data, type }) {
       <input
         className="dataInput"
         type={type}
-        placeHolder={placeHolder}
-        value={!editable ? data : null}
+        placeholder={placeHolder}
+        // value={!editable ? data : ""}
         readOnly={!editable}
         required
       ></input>

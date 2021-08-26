@@ -11,13 +11,13 @@ export default function Login() {
           <DataInput
             type="email"
             placeHolder="Email"
-            data={null}
+            data=" "
             editable={true}
           />
           <DataInput
             type="password"
             placeHolder="Password"
-            data={null}
+            data=" "
             editable={true}
           />
         </div>

@@ -8,28 +8,23 @@ export default function Register() {
       <form>
         <div className="inputs">
           <SectionHeader>Sign up</SectionHeader>
-          <DataInput
-            type="text"
-            placeHolder="Name"
-            data={null}
-            editable={true}
-          />
+          <DataInput type="text" placeHolder="Name" data=" " editable={true} />
           <DataInput
             type="email"
             placeHolder="Email"
-            data={null}
+            data=" "
             editable={true}
           />
           <DataInput
             type="password"
             placeHolder="Password"
-            data={null}
+            data=" "
             editable={true}
           />
           <DataInput
             type="password"
             placeHolder="Password"
-            data={null}
+            data=" "
             editable={true}
           />
         </div>

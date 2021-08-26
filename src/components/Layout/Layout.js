@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Account from "../Pages/Account/Account";
 import MainPage from "../Pages/MainPage/MainPage";
+import LoginPage from "../Pages/LoginPage/LoginPage";
 
 export default function Layout() {
   return (
@@ -15,8 +16,11 @@ export default function Layout() {
             <Route exact path="/">
               <MainPage />
             </Route>
-            <Route exact path="/account">
+            <Route path="/account">
               <Account />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
             </Route>
           </Switch>
         </main>
