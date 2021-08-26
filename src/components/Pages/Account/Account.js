@@ -1,4 +1,4 @@
-import Datainput from "../../DataInput/DataInput";
+import DataInput from "../../DataInput/DataInput";
 import SectionHeader from "../../SectionHeader/SectionHeader";
 import "./style.scss";
 
@@ -7,19 +7,19 @@ export default function Account() {
     <div className="emptyContent">
       <article className="content">
         <SectionHeader>Account settings</SectionHeader>
-        <Datainput
+        <DataInput
           type="email"
           placeHolder="Email"
           data="test@gmail.com"
           editable={true}
         />
-        <Datainput
+        <DataInput
           type="test"
           placeHolder="Name"
           data="Kacper"
           editable={true}
         />
-        <Datainput
+        <DataInput
           type="text"
           placeHolder="Role"
           data="Normal user"
