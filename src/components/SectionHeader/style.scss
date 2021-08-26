@@ -1,0 +1,20 @@
+.sectionHeader {
+  background-color: transparent;
+  color: blue;
+  font-size: 2rem;
+
+  width: 100%;
+
+  text-align: left;
+
+  padding: 1rem 3rem;
+}
+
+.sectionHeader::after {
+  content: " ";
+  display: block;
+  background-color: blue;
+  height: 2px;
+  width: 90%;
+  margin-bottom: 3rem;
+}
