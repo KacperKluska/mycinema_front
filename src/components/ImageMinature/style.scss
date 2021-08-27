@@ -1,4 +1,14 @@
 .imageMinature {
   max-width: 144px;
   max-height: 205px;
+
+  transition: transform 0.5s ease-in-out;
+}
+
+.imageMinatureDiv {
+  overflow: hidden;
+}
+
+.imageMinature:hover {
+  transform: scale(1.15);
 }
