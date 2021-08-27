@@ -16,7 +16,15 @@
   display: flex;
   flex-direction: column;
 
-  //   min-width: 60%;
+  max-width: 60%;
 
   padding-left: 1rem;
+}
+
+.descriptionLabel {
+  font-weight: bold;
+}
+
+.descriptionLine {
+  margin-bottom: 5px;
 }
