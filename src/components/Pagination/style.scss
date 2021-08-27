@@ -1,0 +1,44 @@
+.pages {
+  color: white;
+
+  margin-top: 1rem;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+  }
+}
+
+.pageNumberBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 3rem;
+
+  padding: 0.5rem;
+
+  background-color: #333;
+
+  cursor: pointer;
+}
+
+.pageNumberBox:hover {
+  background-color: #444;
+  color: blue;
+}
+
+.pageNumberBox.active {
+  background-color: #555;
+
+  cursor: default;
+}
+
+// .pageNumberBox.active:hover {
+//   cursor: black;
+// }
