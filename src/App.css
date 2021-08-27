@@ -29,11 +29,7 @@
   width: 100%;
   min-height: 500px;
 
-  background-color: #ccc;
-
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+  background-color: #eee;
 }
 
 .linkStyle {
