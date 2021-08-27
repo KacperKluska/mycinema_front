@@ -1,0 +1,13 @@
+.separator {
+  height: 400px;
+  width: 2px;
+
+  background-color: blue;
+}
+
+.loginPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}

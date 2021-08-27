@@ -1,0 +1,30 @@
+.data {
+  width: 70%;
+  min-height: 3rem;
+  margin: 1rem 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dataInput {
+  width: 90%;
+  height: 2rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid blue;
+  background-color: transparent;
+}
+
+.dataInput:focus {
+  border: 2px solid blue;
+  background-color: white;
+}
+
+.loginLabel {
+  min-width: 70px;
+}
