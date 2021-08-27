@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FilmMinature from "../../FilmMinature/FilmMinature";
+import SectionHeader from "../../SectionHeader/SectionHeader";
 import Search from "../../Search/Search";
 import "./style.scss";
 
@@ -50,6 +51,7 @@ export default function MainPage() {
     <div className="emptyContent">
       <Search />
       <div className="content">
+        <SectionHeader>Films</SectionHeader>
         {loading && <div>Loading...</div>}
         {!loading &&
           films.map((film) => {
