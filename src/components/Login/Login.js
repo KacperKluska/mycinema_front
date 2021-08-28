@@ -1,10 +1,11 @@
 import "./style.scss";
 import DataInput from "../DataInput/DataInput";
 import SectionHeader from "../SectionHeader/SectionHeader";
+import Button from "../Button/Button";
 
 export default function Login() {
   return (
-    <section className="" id="register">
+    <section className="loginSection">
       <form>
         <div className="inputs">
           <SectionHeader>Sign in</SectionHeader>
@@ -21,7 +22,11 @@ export default function Login() {
             editable={true}
           />
         </div>
-        <div className="loginDownSection"></div>
+        <div className="loginDownSection">
+          <Button type="submit" color="blue">
+            Sign in
+          </Button>
+        </div>
       </form>
     </section>
   );
