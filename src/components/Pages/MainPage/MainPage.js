@@ -40,7 +40,7 @@ export default function MainPage() {
     return [films, loading];
   };
 
-  const [films, loading] = useFilmList("http://localhost:8080/films");
+  const [films, loading] = useFilmList("http://localhost:8080/getAllFilms");
   const [przefiltrowane, setPrzefiltrowane] = useState(films);
   // console.log(films);
 
@@ -75,7 +75,7 @@ export default function MainPage() {
         <SectionHeader>Films</SectionHeader>
         {loading && <div>Loading...</div>}
         {!loading &&
-          przefiltrowane.map((film) => {
+          films.filter(warunek).map((film) => {
             return <FilmMinature key={film.id} film={film} />;
           })}
       </div>
