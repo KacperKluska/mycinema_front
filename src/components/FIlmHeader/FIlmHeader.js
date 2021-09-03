@@ -1,5 +1,10 @@
+import { Link } from "react-router-dom";
 import "./style.scss";
 
-export default function FilmHeader({ children }) {
-  return <h1 className="filmHeader">{children}</h1>;
+export default function FilmHeader({ filmId, children }) {
+  return (
+    <h1 className="filmHeader">
+      <Link /*className="linkStyle"*/ to={filmId}>{children}</Link>
+    </h1>
+  );
 }

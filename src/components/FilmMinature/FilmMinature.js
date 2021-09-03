@@ -7,7 +7,7 @@ export default function FilmMinature({ film, type }) {
     <article className="filmMinature">
       <ImageMinature url={film.img} />
       <section className="filmDescription">
-        <FilmHeader>{film.title}</FilmHeader>
+        <FilmHeader filmId={film.id}>{film.title}</FilmHeader>
         <div className="descriptionLine">
           <label className="descriptionLabel">Release: </label>
           {film.release}
