@@ -18,55 +18,45 @@ export default function MainPage() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  const useFilmList = (url) => {
+  const useFilmList = (filmsURL, filmsTypesURL, page, query) => {
     const [films, setFilms] = useState([]);
+    const [filmsTypes, setFilmsTypes] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       async function getData() {
         try {
           setLoading(true);
-          const response = await fetch(url);
-          const data = await response.json();
-          setFilms(data);
+          const filmsResponse = await fetch(
+            `${filmsURL}?page=${page - 1}&q=${query}`
+          );
+          const typesResponse = await fetch(filmsTypesURL);
+          const filmsData = await filmsResponse.json();
+          const typesData = await typesResponse.json();
+          setFilms(filmsData);
+          setFilmsTypes(typesData);
           setLoading(false);
         } catch (error) {
           console.log(error);
         }
       }
       getData();
-    }, [url]);
+    }, [filmsURL, filmsTypesURL, page, query]);
 
-    return [films, loading];
+    return [films, filmsTypes, loading];
   };
 
-  const [films, loading] = useFilmList("http://localhost:8080/getAllFilms");
-  const [przefiltrowane, setPrzefiltrowane] = useState(films);
+  const [films, filmsTypes, loading] = useFilmList(
+    "http://localhost:8080/getAllFilms",
+    "http://localhost:8080/getTypes",
+    currentPage,
+    searchText
+  );
+  // console.log(filmsTypes);
   // console.log(films);
 
-  const indexOfLastFilm = currentPage * filmsPerPage;
-  const indexOfFirstFilm = indexOfLastFilm - filmsPerPage;
-  console.log(indexOfLastFilm);
-  // const currentFilms = films.slice(indexOfFirstFilm, indexOfLastFilm);
-
-  const warunek = (film, index) => {
-    if (
-      (searchText === "" &&
-        index >= indexOfFirstFilm &&
-        index < indexOfLastFilm) ||
-      (searchText !== "" &&
-        film.title.toLowerCase().includes(searchText.toLowerCase()))
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  useEffect(() => {
-    setPrzefiltrowane(films.filter(warunek));
-    console.log(przefiltrowane);
-  }, [searchText]);
+  //function to find movie type
+  const getFilmType = (id) => filmsTypes.find((type) => type.id === id);
 
   return (
     <div className="emptyContent">
@@ -75,13 +65,19 @@ export default function MainPage() {
         <SectionHeader>Films</SectionHeader>
         {loading && <div>Loading...</div>}
         {!loading &&
-          films.filter(warunek).map((film) => {
-            return <FilmMinature key={film.id} film={film} />;
+          films.filmEntities.map((film) => {
+            return (
+              <FilmMinature
+                key={film.id}
+                film={film}
+                type={getFilmType(film.type)}
+              />
+            );
           })}
       </div>
       <Pagination
         itemsPerPage={filmsPerPage}
-        totalItems={films.length}
+        totalItems={films.totalMovies}
         paginate={paginate}
         currentPage={currentPage}
       />
