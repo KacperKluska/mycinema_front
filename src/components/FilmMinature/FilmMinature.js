@@ -2,12 +2,23 @@ import "./style.scss";
 import ImageMinature from "../ImageMinature/ImageMinature";
 import FilmHeader from "../FIlmHeader/FIlmHeader";
 
-export default function FilmMinature({ film, type }) {
+export default function FilmMinature({
+  film,
+  type,
+  handleMovie,
+  handleMovieId,
+}) {
   return (
     <article className="filmMinature">
       <ImageMinature url={film.img} />
       <section className="filmDescription">
-        <FilmHeader filmId={film.id}>{film.title}</FilmHeader>
+        <FilmHeader
+          filmId={film.id}
+          handleMovie={handleMovie}
+          handleMovieId={handleMovieId}
+        >
+          {film.title}
+        </FilmHeader>
         <div className="descriptionLine">
           <label className="descriptionLabel">Release: </label>
           {film.release}
