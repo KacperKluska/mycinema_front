@@ -13,3 +13,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.goBackButton {
+  padding: 1rem;
+  background-color: #6c757d;
+  border: none;
+}
+
+.goBackButton:hover {
+  background-color: #d6d7d8;
+}

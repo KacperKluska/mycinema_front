@@ -4,7 +4,9 @@ import ImageMinature from "../ImageMinature/ImageMinature";
 export default function Movie({ handleMovie, movie, type }) {
   return (
     <div className="content">
-      <button onClick={handleMovie}>&lt; Go back</button>
+      <button className="goBackButton" onClick={handleMovie}>
+        &lt; Go back
+      </button>
       <section className="filmMinature">
         <ImageMinature url={movie.img} />
         <section className="filmDescription">
