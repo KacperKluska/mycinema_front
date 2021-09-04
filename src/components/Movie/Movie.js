@@ -9,6 +9,8 @@ export default function Movie() {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState();
   const [type, setType] = useState();
+  const [userRate, setUserRate] = useState(0);
+  const [userComment, setUserComment] = useState("");
 
   useEffect(() => {
     async function getData() {
@@ -90,7 +92,10 @@ export default function Movie() {
             <article>
               <div className="commentsSection">
                 <h1 className="movieTitle">Comments:</h1>
-                <CommentInput></CommentInput>
+                <CommentInput
+                  handleNumber={setUserRate}
+                  handleText={setUserComment}
+                />
               </div>
             </article>
           </div>

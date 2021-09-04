@@ -1,0 +1,40 @@
+.commentForm {
+  border: 1px solid #333;
+  margin-bottom: 0.5rem;
+}
+
+.userRate {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-inline: 1rem;
+
+  outline: none;
+}
+
+.userRate:focus {
+  border: 2px solid blue;
+}
+
+.userComment {
+  width: 95%;
+  height: 100px;
+
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  margin-inline: 1rem;
+
+  outline: none;
+
+  resize: none;
+}
+
+.userComment:focus {
+  border: 2px solid blue;
+}
+
+.commentUpperRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
