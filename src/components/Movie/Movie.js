@@ -2,6 +2,7 @@ import "./style.scss";
 import ImageMinature from "../ImageMinature/ImageMinature";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react/cjs/react.development";
+import CommentInput from "../CommentInput/CommentInput";
 
 export default function Movie() {
   const { id } = useParams();
@@ -89,6 +90,7 @@ export default function Movie() {
             <article>
               <div className="commentsSection">
                 <h1 className="movieTitle">Comments:</h1>
+                <CommentInput></CommentInput>
               </div>
             </article>
           </div>
