@@ -7,7 +7,7 @@ export default function CommentInput({
   handleButtonCLick,
 }) {
   return (
-    <form className="commentForm">
+    <form className="commentForm" onSubmit={handleButtonCLick}>
       <div className="commentUpperRow">
         <input
           className="userRate"
@@ -19,7 +19,7 @@ export default function CommentInput({
           onChange={(e) => handleNumber(e.target.value)}
           required
         ></input>
-        <Button color="blue" type="submit" onClick={handleButtonCLick}>
+        <Button color="blue" type="submit">
           Comment!
         </Button>
       </div>

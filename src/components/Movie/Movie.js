@@ -49,9 +49,10 @@ export default function Movie() {
     getData();
   }, [id]);
 
-  const addComment = async () => {
+  async function addComment(event) {
+    event.preventDefault();
     console.log("wysyłam komentarz");
-    const response = await fetch("http://localhost:8080/addComment", {
+    const response = await fetch("http://localhost:8080/addNewCommentToFilm", {
       method: "POST",
       body: JSON.stringify({
         userId: 1,
@@ -59,7 +60,8 @@ export default function Movie() {
         userRate: userRate,
         text: userComment,
       }),
-      headers: { "Content-Type": "application/json; charset=UTF=8" },
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+      // mode: "no-cors",
     });
 
     const responseText = await response.json();
@@ -67,7 +69,7 @@ export default function Movie() {
       "🚀 ~ file: Movie.js ~ line 51 ~ addComment ~ responseText",
       responseText
     );
-  };
+  }
 
   return (
     <div className="emptyContent">
@@ -134,7 +136,11 @@ export default function Movie() {
             </article>
             <section>
               {comments.map((comment) => {
-                return <Comment rate={comment.rate}>{comment.text}</Comment>;
+                return (
+                  <Comment key={comment.id} rate={comment.rate}>
+                    {comment.text}
+                  </Comment>
+                );
               })}
             </section>
           </div>

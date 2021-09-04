@@ -6,6 +6,7 @@ export default function Comment({ rate, children }) {
       <div className="commentLeftSide">
         <img
           className="defaultUserImg"
+          alt="userImg"
           src="https://boostchiropractic.co.nz/wp-content/uploads/2016/09/default-user-img.jpg"
         />
         Rate: {rate}/10
