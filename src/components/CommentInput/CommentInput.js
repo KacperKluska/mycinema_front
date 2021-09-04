@@ -1,7 +1,11 @@
 import Button from "../Button/Button";
 import "./style.scss";
 
-export default function CommentInput({ handleNumber, handleText }) {
+export default function CommentInput({
+  handleNumber,
+  handleText,
+  handleButtonCLick,
+}) {
   return (
     <form className="commentForm">
       <div className="commentUpperRow">
@@ -12,10 +16,10 @@ export default function CommentInput({ handleNumber, handleText }) {
           min="0"
           step=".1"
           placeholder="Your rate..."
-          onChange={(e) => handleNumber(e.targert.value)}
+          onChange={(e) => handleNumber(e.target.value)}
           required
         ></input>
-        <Button color="blue" type="submit">
+        <Button color="blue" type="submit" onClick={handleButtonCLick}>
           Comment!
         </Button>
       </div>
@@ -23,7 +27,7 @@ export default function CommentInput({ handleNumber, handleText }) {
         className="userComment"
         maxLength="256"
         placeholder="Write a comment..."
-        onChange={(e) => handleText(e.targert.value)}
+        onChange={(e) => handleText(e.target.value)}
         required
       ></textarea>
     </form>

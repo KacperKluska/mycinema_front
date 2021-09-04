@@ -1,14 +1,17 @@
 import "./style.scss";
 import ImageMinature from "../ImageMinature/ImageMinature";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
+// import { useParams, Link } from "react-router";
 import { useState, useEffect } from "react/cjs/react.development";
 import CommentInput from "../CommentInput/CommentInput";
+import Comment from "../Comment/Comment";
 
 export default function Movie() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState();
   const [type, setType] = useState();
+  const [comments, setComments] = useState();
   const [userRate, setUserRate] = useState(0);
   const [userComment, setUserComment] = useState("");
 
@@ -16,17 +19,28 @@ export default function Movie() {
     async function getData() {
       try {
         setLoading(true);
+        //movie
         const movieResponse = await fetch(
           `http://localhost:8080/getFilm?filmId=${id}`
         );
         const movieData = await movieResponse.json();
         setMovie(movieData);
-        console.log(movieData);
+        //movie type
         const typeResponse = await fetch(
           `http://localhost:8080/getType?typeId=${movieData.type}`
         );
         const typeData = await typeResponse.json();
         setType(typeData);
+        //comments
+        const commentsResponse = await fetch(
+          `http://localhost:8080/getAllFilmComments?filmId=${movieData.id}`
+        );
+        const commentsData = await commentsResponse.json();
+        setComments(commentsData);
+        console.log(
+          "🚀 ~ file: Movie.js ~ line 40 ~ getData ~ commentsData",
+          commentsData
+        );
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -35,14 +49,33 @@ export default function Movie() {
     getData();
   }, [id]);
 
-  // console.log(movie);
-  // console.log(type);
+  const addComment = async () => {
+    console.log("wysyłam komentarz");
+    const response = await fetch("http://localhost:8080/addComment", {
+      method: "POST",
+      body: JSON.stringify({
+        userId: 1,
+        filmId: id,
+        userRate: userRate,
+        text: userComment,
+      }),
+      headers: { "Content-Type": "application/json; charset=UTF=8" },
+    });
+
+    const responseText = await response.json();
+    console.log(
+      "🚀 ~ file: Movie.js ~ line 51 ~ addComment ~ responseText",
+      responseText
+    );
+  };
 
   return (
     <div className="emptyContent">
       <div className="content">
         {loading && <div>Loading...</div>}
-        <button className="goBackButton">&lt; Go back</button>
+        <Link to="/">
+          <button className="goBackButton">&lt; Go back</button>
+        </Link>
         {!loading && (
           <div>
             <section className="filmMinature">
@@ -95,9 +128,15 @@ export default function Movie() {
                 <CommentInput
                   handleNumber={setUserRate}
                   handleText={setUserComment}
+                  handleButtonCLick={addComment}
                 />
               </div>
             </article>
+            <section>
+              {comments.map((comment) => {
+                return <Comment rate={comment.rate}>{comment.text}</Comment>;
+              })}
+            </section>
           </div>
         )}
       </div>
