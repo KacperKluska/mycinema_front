@@ -4,18 +4,11 @@ import SectionHeader from "../../SectionHeader/SectionHeader";
 import Search from "../../Search/Search";
 import "./style.scss";
 import Pagination from "../../Pagination/Pagination";
-import Movie from "../../Movie/Movie";
 
 export default function MainPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filmsPerPage] = useState(4);
   const [searchText, setSearchText] = useState("");
-  const [seeMovie, setSeeMovie] = useState(false);
-  const [currentMovieId, setcurrentMovieId] = useState(0);
-
-  const handleMovie = () => {
-    setSeeMovie((prev) => (prev = !prev));
-  };
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -23,7 +16,7 @@ export default function MainPage() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [currentPage, currentMovieId]);
+  }, [currentPage]);
 
   const useFilmList = (filmsURL, filmsTypesURL, page, query) => {
     const [films, setFilms] = useState([]);
@@ -66,42 +59,36 @@ export default function MainPage() {
 
   return (
     <div className="emptyContent">
-      {!seeMovie && (
-        <article style={{ width: "100%" }}>
-          <Search handleTyping={setSearchText} />
-          <div className="content">
-            <SectionHeader>Films</SectionHeader>
-            {loading && <div>Loading...</div>}
-            {!loading &&
-              films.filmEntities.map((film) => {
-                return (
-                  <FilmMinature
-                    key={film.id}
-                    film={film}
-                    type={getFilmType(film.type)}
-                    handleMovie={handleMovie}
-                    handleMovieId={setcurrentMovieId}
-                  />
-                );
-              })}
-          </div>
-          <Pagination
-            itemsPerPage={filmsPerPage}
-            totalItems={films.totalMovies}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </article>
-      )}
-      {seeMovie && (
-        <Movie
-          handleMovie={handleMovie}
-          movie={films.filmEntities.find((m) => m.id === currentMovieId)}
-          type={getFilmType(
-            films.filmEntities.find((m) => m.id === currentMovieId).type
-          )}
+      <article style={{ width: "100%" }}>
+        <Search handleTyping={setSearchText} />
+        <div className="content">
+          <SectionHeader>Films</SectionHeader>
+          {loading && <div>Loading...</div>}
+          {!loading &&
+            films.filmEntities.map((film) => {
+              return (
+                <FilmMinature
+                  key={film.id}
+                  film={film}
+                  type={getFilmType(film.type)}
+                />
+              );
+            })}
+        </div>
+        <Pagination
+          itemsPerPage={filmsPerPage}
+          totalItems={films.totalMovies}
+          paginate={paginate}
+          currentPage={currentPage}
         />
-      )}
+      </article>
+      {/* <Movie
+        handleMovie={handleMovie}
+        movie={films.filmEntities.find((m) => m.id === currentMovieId)}
+        type={getFilmType(
+          films.filmEntities.find((m) => m.id === currentMovieId).type
+        )}
+      /> */}
     </div>
   );
 }

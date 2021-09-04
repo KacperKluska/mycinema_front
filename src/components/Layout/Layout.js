@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import Account from "../Pages/Account/Account";
 import MainPage from "../Pages/MainPage/MainPage";
 import LoginPage from "../Pages/LoginPage/LoginPage";
+import Movie from "../Movie/Movie";
 
 export default function Layout() {
   return (
@@ -15,6 +16,9 @@ export default function Layout() {
           <Switch>
             <Route exact path="/">
               <MainPage />
+            </Route>
+            <Route path="/movies/:id">
+              <Movie />
             </Route>
             <Route path="/account">
               <Account />
