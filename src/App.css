@@ -62,3 +62,34 @@
 
   border-top: 1px solid blue;
 }
+
+.filmMinature {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  padding: 2rem 3rem;
+
+  border-bottom: 1px solid blue;
+}
+
+.filmMinature:last-child {
+  border-bottom: none;
+}
+
+.filmDescription {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 60%;
+
+  padding-left: 2rem;
+}
+
+.descriptionLabel {
+  font-weight: bold;
+}
+
+.descriptionLine {
+  margin-block: 7px;
+}
