@@ -9,6 +9,7 @@ import Comment from "../Comment/Comment";
 export default function Movie() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [commentsLoading, setCommentsLoading] = useState(true);
   const [movie, setMovie] = useState();
   const [type, setType] = useState();
   const [comments, setComments] = useState();
@@ -18,6 +19,11 @@ export default function Movie() {
   useEffect(() => {
     async function getData() {
       try {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
         setLoading(true);
         //movie
         const movieResponse = await fetch(
@@ -37,38 +43,45 @@ export default function Movie() {
         );
         const commentsData = await commentsResponse.json();
         setComments(commentsData);
-        console.log(
-          "🚀 ~ file: Movie.js ~ line 40 ~ getData ~ commentsData",
-          commentsData
-        );
         setLoading(false);
       } catch (error) {
         console.log(error);
       }
     }
     getData();
-  }, [id]);
+  }, [id, commentsLoading]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight + 400,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [commentsLoading]);
 
   async function addComment(event) {
+    setCommentsLoading(true);
     event.preventDefault();
     console.log("wysyłam komentarz");
-    const response = await fetch("http://localhost:8080/addNewCommentToFilm", {
-      method: "POST",
-      body: JSON.stringify({
-        userId: 1,
-        filmId: id,
-        userRate: userRate,
-        text: userComment,
-      }),
-      headers: { "Content-Type": "application/json; charset=UTF-8" },
-      // mode: "no-cors",
-    });
-
-    const responseText = await response.json();
-    console.log(
-      "🚀 ~ file: Movie.js ~ line 51 ~ addComment ~ responseText",
-      responseText
-    );
+    try {
+      const response = await fetch(
+        "http://localhost:8080/addNewCommentToFilm",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            userId: 1,
+            filmId: id,
+            userRate: userRate,
+            text: userComment,
+          }),
+          headers: { "Content-Type": "application/json; charset=UTF-8" },
+        }
+      );
+      console.log(await response.json());
+      setCommentsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -135,13 +148,14 @@ export default function Movie() {
               </div>
             </article>
             <section>
-              {comments.map((comment) => {
-                return (
-                  <Comment key={comment.id} rate={comment.rate}>
-                    {comment.text}
-                  </Comment>
-                );
-              })}
+              {comments !== null &&
+                comments.map((comment) => {
+                  return (
+                    <Comment key={comment.id} rate={comment.rate}>
+                      {comment.text}
+                    </Comment>
+                  );
+                })}
             </section>
           </div>
         )}
