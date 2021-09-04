@@ -97,6 +97,9 @@ export default function MainPage() {
         <Movie
           handleMovie={handleMovie}
           movie={films.filmEntities.find((m) => m.id === currentMovieId)}
+          type={getFilmType(
+            films.filmEntities.find((m) => m.id === currentMovieId).type
+          )}
         />
       )}
     </div>
