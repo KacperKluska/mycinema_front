@@ -6,6 +6,9 @@ import Account from "../Pages/Account/Account";
 import MainPage from "../Pages/MainPage/MainPage";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import Movie from "../Movie/Movie";
+import UsersListPage from "../Pages/AdminPages/UsersListPage/UsersListPage";
+import CommentsPage from "../Pages/AdminPages/CommentsPage/CommentsPage";
+import UploadMovietPage from "../Pages/AdminPages/UploadMoviePage/UploadMoviePage";
 
 export default function Layout() {
   return (
@@ -25,6 +28,15 @@ export default function Layout() {
             </Route>
             <Route path="/login">
               <LoginPage />
+            </Route>
+            <Route path="/admin/users_list">
+              <UsersListPage />
+            </Route>
+            <Route path="/admin/comments_list">
+              <CommentsPage />
+            </Route>
+            <Route path="/admin/upload_movie">
+              <UploadMovietPage />
             </Route>
           </Switch>
         </main>

@@ -27,20 +27,25 @@ export default function Header() {
             <Link className="linkStyle" to="/login">
               Sign up
             </Link>
-            {/* <li onClick={LogIn}>Sign in</li>
-            <li>Sign up</li> */}
           </ul>
         )}
         {userLogged && (
           <ul>
+            <Link className="linkStyle" to="/admin/users_list">
+              Users list
+            </Link>
+            <Link className="linkStyle" to="/admin/comments_list">
+              Comments
+            </Link>
+            <Link className="linkStyle" to="/admin/upload_movie">
+              Upload Movie
+            </Link>
             <Link className="linkStyle" to="/account">
               Account
             </Link>
             <Link className="linkStyle" to="/" onClick={LogOut}>
               Log out
             </Link>
-            {/* <li>Account</li>
-            <li onClick={LogOut}>Log out</li> */}
           </ul>
         )}
       </nav>

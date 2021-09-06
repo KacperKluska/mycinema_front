@@ -58,8 +58,8 @@ export default function MainPage() {
   const getFilmType = (id) => filmsTypes.find((type) => type.id === id);
 
   return (
-    <div className="emptyContent">
-      <article style={{ width: "100%" }}>
+    <article className="emptyContent">
+      <div style={{ width: "100%" }}>
         <Search handleTyping={setSearchText} />
         <div className="content">
           <SectionHeader>Films</SectionHeader>
@@ -81,7 +81,7 @@ export default function MainPage() {
           paginate={paginate}
           currentPage={currentPage}
         />
-      </article>
+      </div>
       {/* <Movie
         handleMovie={handleMovie}
         movie={films.filmEntities.find((m) => m.id === currentMovieId)}
@@ -89,6 +89,6 @@ export default function MainPage() {
           films.filmEntities.find((m) => m.id === currentMovieId).type
         )}
       /> */}
-    </div>
+    </article>
   );
 }
