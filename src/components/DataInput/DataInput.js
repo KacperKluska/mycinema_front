@@ -1,6 +1,14 @@
 import "./style.scss";
 
-export default function DataInput({ placeHolder, editable, data, type }) {
+export default function DataInput({
+  placeHolder,
+  editable,
+  type,
+  value,
+  maxLength,
+  minLength,
+  onChange,
+}) {
   return (
     <div className="data">
       <label className="loginLabel">{placeHolder}:</label>
@@ -8,9 +16,14 @@ export default function DataInput({ placeHolder, editable, data, type }) {
         className="dataInput"
         type={type}
         placeholder={placeHolder}
-        // value={!editable ? data : ""}
+        maxLength={maxLength}
+        minLength={minLength}
+        value={value}
         readOnly={!editable}
         required
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
       ></input>
     </div>
   );
