@@ -2,6 +2,10 @@ import "./style.scss";
 
 export default function Comment({ rate, children }) {
   return (
+    /**
+     * TODO
+     * download user name from server by userId
+     */
     <section className="commentBox">
       <div className="commentLeftSide">
         <img

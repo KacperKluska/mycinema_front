@@ -1,0 +1,17 @@
+.commentRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+  padding: 1rem;
+
+  margin-inline: 5%;
+
+  border-bottom: 2px solid blue;
+}
+
+.commentRow:last-child {
+  border: none;
+}
