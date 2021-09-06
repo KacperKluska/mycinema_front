@@ -1,3 +1,4 @@
+import "./style.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 import SectionHeader from "../../../SectionHeader/SectionHeader";
 import UserAccountRow from "../../../UserAccountRow/UserAccountRow";
