@@ -1,0 +1,28 @@
+.userAccountRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+  height: 4rem;
+
+  padding: 1rem;
+  margin-inline: 5%;
+
+  border-bottom: 2px solid blue;
+}
+
+.userAccountRow:last-child {
+  border: none;
+}
+.userAccountRowButtons {
+  width: 20%;
+}
+
+.userAccountRowDetails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  width: 40%;
+}
