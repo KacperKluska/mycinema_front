@@ -9,10 +9,13 @@ export default function UsersListPage() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [loading]);
+
+  const deleteUser = () => {
+    setLoading(true);
+  };
 
   const getData = async () => {
-    setLoading(true);
     console.log("Downloading users...");
     try {
       const response = await fetch("http://localhost:8080/getUsers");
@@ -32,7 +35,7 @@ export default function UsersListPage() {
         {!loading && (
           <div className="usersList">
             {users.map((user) => {
-              return <UserAccountRow user={user} />;
+              return <UserAccountRow user={user} onUserDelete={deleteUser} />;
             })}
           </div>
         )}
